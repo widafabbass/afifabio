@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFIFA BIO - المكونات</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #28a745;
+            --secondary-green: #5c8d5c;
+            --light-bg: #e0e9e0;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+            --highlight-yellow: #f8d052;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', 'Montserrat', sans-serif;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            line-height: 1.8;
+            
+            /* --- خلفية جديدة للصفحة بالكامل --- */
+            background-image:
+                linear-gradient(rgba(224, 233, 224, 0.5), rgba(224, 233, 224, 0.5)),
+                url('11079871.png'),
+                url('210056456_10975904.png'),
+                url('210056456_10975904.png'),
+                url('10218609.png');
+            background-position:
+                center,
+                top right,
+                top left,
+                bottom right,
+                bottom left;
+            background-size:
+                cover,
+                150px,
+                150px,
+                150px,
+                150px;
+            background-repeat:
+                no-repeat,
+                no-repeat,
+                no-repeat,
+                no-repeat,
+                no-repeat;
+            background-attachment: fixed;
+            /* --- نهاية الخلفية الجديدة --- */
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-green);
+        }
+
+        /* Header / Navigation Bar */
+        .header {
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-green);
+            animation: moveLogo 5s infinite alternate;
+        }
+
+        @keyframes moveLogo {
+            from { transform: translateX(0); }
+            to { transform: translateX(-10px); }
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark-text);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Styles for the ingredients page */
+        .ingredients-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 150px 5% 50px;
+            gap: 30px;
+            direction: rtl;
+            background-color: transparent; /* Changed to transparent to see the background leaves */
+        }
+
+        .ingredients-container h1 {
+            width: 100%;
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--primary-green);
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .ingredient-item {
+            width: 18%;
+            min-width: 150px;
+            text-align: center;
+            background-color: #ffffff;
+            padding: 25px 15px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ingredient-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+
+        .ingredient-item img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-green);
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+            
+        .ingredient-item h3 {
+            font-size: 1.3em;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .ingredient-item p {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .ingredient-item {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                background-image: none; /* Remove background leaves on small screens for better readability */
+            }
+            .ingredients-container {
+                padding-top: 120px;
+                background-image: none;
+            }
+            .ingredient-item {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">AFIFA BIO</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="ingredients.html">المكونات</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="ingredients-container">
+        <h1>مكونات AFIFA BIO الطبيعية</h1>
+        
+        <div class="ingredient-item">
+            <img src="images.jpg" alt="زيت الأوكالبتوس">
+            <h3>زيت الأوكالبتوس</h3>
+            <p>يساعد على تهدئة آلام العضلات والمفاصل بفضل خصائصه المضادة للالتهابات والمسكنة.</p>
+        </div>
+        
+        <div class="ingredient-item">
+            <img src="na.jpg" alt="زيت النعناع">
+            <h3>زيت النعناع</h3>
+            <p>يحتوي على المنثول الذي يساعد على تخفيف آلام العضلات ويحسن الدورة الدموية.</p>
+        </div>
+        
+        <div class="ingredient-item">
+            <img src="ka.jpg" alt="زيت الكافور">
+            <h3>زيت الكافور</h3>
+            <p>يستخدم لخصائصه المسكنة والمضادة للالتهابات. يساعد في تخفيف التورم والألم.</p>
+        </div>
+
+        <div class="ingredient-item">
+            <img src="za.jpg" alt="زيت الزنجبيل">
+            <h3>زيت الزنجبيل</h3>
+            <p>يدفئ العضلات ويخفف من التشنجات. مثالي لتخفيف آلام العضلات بعد التمارين.</p>
+        </div>
+
+        <div class="ingredient-item">
+            <img src="ba.jpg" alt="زيت البابونج">
+            <h3>زيت البابونج</h3>
+            <p>معروف بخصائصه المهدئة والمضادة للتشنج، يساعد على استرخاء العضلات المتصلبة.</p>
+        </div>
+
+    </main>
+
+</body>
+</html>

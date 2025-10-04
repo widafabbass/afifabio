@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFIFA BIO - من نحن</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Cairo:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #28a745;
+            --secondary-green: #5c8d5c;
+            --light-bg: #e0e9e0;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+            --highlight-yellow: #f8d052;
+            --card-bg: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans Arabic', 'Cairo', 'Poppins', sans-serif;
+            color: var(--dark-text);
+            background-color: #f7f9f7;
+            line-height: 1.8;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-green);
+        }
+
+        /* Conteneur pour l'animation de fond */
+        .background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f7f9f7, #e0e9e0);
+        }
+
+        /* Création et animation des cercles */
+        .background-container::before,
+        .background-container::after {
+            content: '';
+            position: absolute;
+            background-color: var(--primary-green);
+            border-radius: 50%;
+            filter: blur(80px); /* Flou pour un effet doux */
+            opacity: 0.2;
+            animation: move-and-scale 18s infinite ease-in-out;
+        }
+
+        .background-container::before {
+            width: 500px;
+            height: 500px;
+            top: -100px;
+            right: -100px;
+            animation-delay: 2s;
+        }
+        
+        .background-container::after {
+            width: 300px;
+            height: 300px;
+            bottom: -50px;
+            left: -50px;
+            animation-delay: 0s;
+            background-color: #5c8d5c;
+        }
+        
+        @keyframes move-and-scale {
+            0% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-50px, 30px) scale(1.1); }
+            50% { transform: translate(50px, -50px) scale(1.2); }
+            75% { transform: translate(-30px, -30px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* Header / Navigation Bar */
+        .header {
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark-text);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        /* About Us Section */
+        .about-section {
+            padding: 120px 5% 50px;
+            text-align: center;
+            position: relative;
+            z-index: 1; /* Assure que le contenu est au-dessus de l'animation */
+        }
+        
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-section h1 {
+            font-size: 3em;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .about-section h2 {
+            font-size: 2em;
+            color: var(--secondary-green);
+            margin-bottom: 15px;
+            font-family: 'Poppins', 'Noto Sans Arabic', sans-serif;
+            font-weight: 600;
+        }
+
+        .about-content {
+            min-width: 300px;
+            max-width: 700px;
+            text-align: center;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .about-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15), 0 0 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .about-content p {
+            font-family: 'Noto Sans Arabic', 'Poppins', sans-serif;
+            font-weight: 400;
+            margin-bottom: 1em;
+        }
+        
+        .about-values {
+            margin-top: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-values h2 {
+            margin-bottom: 30px;
+            font-family: 'Poppins', 'Noto Sans Arabic', sans-serif;
+            font-weight: 600;
+        }
+
+        .values-grid { 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .value-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1 1 280px;
+            max-width: 300px;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .value-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1), 0 0 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .value-item h3 {
+            font-size: 1.5em;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-family: 'Poppins', 'Noto Sans Arabic', sans-serif;
+            font-weight: 500;
+        }
+
+        .value-item p {
+            font-family: 'Noto Sans Arabic', 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 0.95em;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links li {
+                margin: 0 15px 10px;
+            }
+            .about-section {
+                padding-top: 100px;
+            }
+            .about-container {
+                gap: 20px;
+            }
+            .values-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .value-item {
+                flex: 1 1 90%;
+                max-width: 90%;
+            }
+            .about-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-container"></div>
+
+    <header class="header">
+        <div class="logo">AFIFA BIO</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="ingredients.html">المكونات</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-section">
+        <div class="about-container">
+            <h1>قصتنا</h1>
+            <div class="about-content">
+                <h2>AFIFA BIO: الطبيعة في جوهر كل منتج</h2>
+                <p>تأسست AFIFA BIO على مبدأ بسيط ولكنه عميق: أن الطبيعة تمتلك القوة الحقيقية لتخفيف الآلام. منذ البداية، كان هدفنا هو تسخير هذه القوة لإنشاء منتجات علاجية نقية وفعالة. بدأ كل شيء من شغفنا بالطب البديل والحلول الطبيعية، مما قادنا إلى البحث عن أجود المكونات النباتية. كان حلمنا هو تقديم بديل آمن ولطيف للعلاجات التقليدية.</p>
+                <p>اليوم، نواصل مهمتنا بفخر، مع الالتزام بنفس المعايير العالية للجودة والنقاء والاستدامة. كل قطرة من زيت AFIFA BIO هي شهادة على إيماننا بقوة الطبيعة.</p>
+            </div>
+        </div>
+
+        <div class="about-values">
+            <h2>قيمنا الأساسية</h2>
+            <div class="values-grid"> 
+                <div class="value-item">
+                    <h3>النقاء</h3>
+                    <p>نحن نؤمن بالنقاء المطلق. منتجاتنا خالية تمامًا من أي مواد كيميائية ضارة، ونستخدم فقط المكونات الطبيعية النقية الموثوقة.</p>
+                </div>
+                <div class="value-item">
+                    <h3>الفعالية</h3>
+                    <p>كل منتج من AFIFA BIO مصمم لتقديم نتائج ملموسة. نحن نجمع بين الحكمة التقليدية والبحث العلمي الحديث لضمان الفعالية القصوى.</p>
+                </div>
+                <div class="value-item">
+                    <h3>الاستدامة</h3>
+                    <p>التزامنا تجاه الطبيعة يمتد إلى ممارساتنا. نحن نستخدم طرقًا صديقة للبيئة في مصادرنا وتصنيعنا وتعبئتنا.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
