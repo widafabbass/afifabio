@@ -380,94 +380,143 @@
             color: var(--primary-green);
         }
 
-        /* Hero Section */
-        .hero {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 80px 5%;
-            gap: 5%;
-            min-height: 100vh;
-            background-color: transparent;
-            flex-wrap: wrap;
-            padding-top: 120px;
-        }
+       /* --- 🖼️ Hero Section avec Image de Fond Floue --- */
+/* ------------------------------------------- */
+.hero {
+    position: relative; /* 🔑 IMPORTANT pour positionner l'arrière-plan */
+    overflow: hidden; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 5%;
+    gap: 5%;
+    min-height: 100vh;
+   
+    padding-top: 120px;
+}
 
-        .hero-content {
-            flex: 1;
-            min-width: 300px;
-            max-width: 550px;
-            text-align: right;
-            margin-bottom: 40px;
-        }
+/* 🖼️ Styles de l'image de fond floue (Position Absolue) */
+.blurred-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 🔑 Le z-index doit être 0 pour être le fond de la section */
+    z-index: 0; 
+}
+	
+.blurred-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que l'image couvre tout l'écran */
+    
+  filter: blur(1px) brightness(0.98); 
+    
+    transform: scale(1.05); /* Évite les bords flous */
+}
 
-        .hero-content h2 {
-            font-size: 3.5em;
-            color: var(--primary-green);
-            margin-bottom: 20px;
-            line-height: 1.1;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            letter-spacing: 1px;
-        }
 
-        .hero-content p {
-            font-size: 1.15em;
-            color: var(--dark-text);
-            margin-bottom: 30px;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 400;
-            opacity: 0.9;
-        }
+/* ------------------------------------------- */
+/* --- Contenu (Texte sans Encadré) --- */
+/* ------------------------------------------- */
+.hero-content {
+    position: relative; 
+    z-index: 2; /* Garde le contenu au-dessus du fond flou (z-index: 0) */ 
+    
+    /* ❌ SUPPRESSION DE L'ENCADRÉ (suppression du background-color, box-shadow, et padding du conteneur) */
+    /* Ajustement de la disposition Flexbox */
+    flex: 1;
+    min-width: 300px;
+    max-width: 550px;
+    text-align: right;
+    margin-bottom: 40px;
+    padding: 0 20px; /* Petit padding pour éviter de coller aux bords */
+}
 
-        .hero-content .cta-button {
-            display: inline-block;
-            background-color: var(--attention-purple);
-            color: var(--light-text);
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.2em;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+/* ✏️ Styles du Texte Clair sur le Fond Sombre */
+.hero-content h2 {
+    font-size: 3.2em; /* Texte plus grand pour un effet "héroïque" */
+    color: #7a00cc; /* 🔑 COULEUR BLANCHE POUR LISIBILITÉ */
+    margin-bottom: 20px;
+    line-height: 1.1;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+	 text-shadow: 
+        -1px -1px 2px #fff,  /* Haut Gauche */
+        1px -1px 2px #fff,   /* Haut Droit */
+        -1px 1px 2px #fff,   /* Bas Gauche */
+        1px 1px 2px #fff,    /* Bas Droit */
+        0 0 10px rgba(255, 255, 255, 0.7); /* Petit éclat (glow) */
+    letter-spacing: 1px;
+}
 
-        .hero-content .cta-button:hover {
-            background-color: #5d099c;
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+.hero-content p {
+    font-size: 1.5em;
+       color: #0f0f0f; 
 
-        .hero-image {
-            flex: 1;
-            min-width: 300px;
-            max-width: 450px;
-            text-align: center;
-            position: relative;
-            animation: productFloat 4s ease-in-out infinite alternate;
-        }
+    margin-bottom: 30px;
+   font-family: 'Cairo', sans-serif;
+    font-weight: 400;
+    opacity: 1;
+     
+}
 
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease-in-out;
-        }
+.hero-content .cta-button {
+    /* ... (Vos styles de bouton inchangés) ... */
+    display: inline-block;
+    background-color: var(--attention-purple);
+    color: var(--light-text);
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .hero-image img:hover {
-            transform: scale(1.02);
-        }
+.hero-content .cta-button:hover {
+    background-color: #5d099c;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-        @keyframes productFloat {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0); }
-        }
+/* ------------------------------------------- */
+/* --- Image Produit --- */
+/* ------------------------------------------- */
+.hero-image {
+    position: relative; /* Nécessaire pour z-index */
+    z-index: 2; /* Reste au-dessus du fond flou */
+    
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+    text-align: center;
+    position: relative;
+    animation: productFloat 4s ease-in-out infinite alternate;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Légèrement plus d'ombre pour le faire ressortir */
+    transition: transform 0.3s ease-in-out;
+}
+
+.hero-image img:hover {
+    transform: scale(1.02);
+}
+
+@keyframes productFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
 
         /* ----- Sections Styles ----- */
 
@@ -926,25 +975,55 @@
             border-radius: 5px;
             font-size: 1em;
         }
-        .submit-button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: var(--attention-purple); /* استخدام اللون البنفسجي للزر */
-            color: var(--light-text);
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .submit-button:hover {
-            background-color: #5d099c;
-        }
+       /* Note: Ensure these variables are defined in your main :root{} section */
+:root {
+    --attention-purple: #7a00cc; 
+    --light-text: #ffffff;
+}
+
+.submit-button {
+    /* Layout and Centering */
+    display: block; 
+    width: 60%; /* The button will take up 60% of its container's width */
+    max-width: 350px; /* Prevents it from getting too wide on large screens */
+    margin: 20px auto; /* KEY: Centers the block horizontally and adds vertical spacing */
+    
+    /* Aesthetics and Typography */
+    padding: 15px;
+    background-color: var(--attention-purple);
+    color: var(--light-text);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.3em; 
+    font-weight: 700; 
+    cursor: pointer;
+    letter-spacing: 0.5px;
+	text-align: center;
+    
+    /* Dynamic Effects */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(122, 0, 204, 0.4);
+}
+
+.submit-button:hover {
+    /* Hover state: Lifts up slightly and darkens */
+    background-color: #5d009e; 
+    box-shadow: 0 6px 20px rgba(122, 0, 204, 0.6);
+    transform: translateY(-2px); 
+}
+
+.submit-button:active {
+    /* Active state: Simulates being pressed */
+    background-color: #4a007e; 
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+}
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero {
+			 
+   
                 flex-direction: column-reverse;
                 text-align: center;
             }
@@ -1071,16 +1150,21 @@
                 <li><a href="#hero">الرئيسية</a></li>
                 <li><a href="#benefits">فوائد المنتج</a></li>
                 <li><a href="ingredients.html">المكونات</a></li>
-                <li><a href="#order-form">تواصل معنا</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero" id="hero">
+		<div class="blurred-background">
+        <img src="Gemini_Generated_Image_mmnwowmmnwowmmnw.png" alt="Fond nature flou">
+    </div>
         <div class="hero-content">
-            <h2>اكتشف قوة الطبيعة في تخفيف الآلام</h2>
+
+           <h2>اكتشف قوة الطبيعة <br> في تخفيف الآلام</h2>
             <p>تمتع براحة طبيعية مع زيت التدليك AFIFA BIO. بتركيبته الغنية بالمكونات الطبيعية، يعمل الزيت على تهدئة العضلات والمفاصل المتعبة، مما يمنحك شعوراً بالاسترخاء والراحة العميقة. دع الطبيعة تعتني بجسدك.</p>
-           <a href="order.html" class="buy-now-btn">شراء الآن</a>
+           <a href="order.html" class="submit-button">شراء الآن</a>
+		
         </div>
         <div class="hero-image">
             <img src="Gemini_Generated_Image_jax0nfjax0nfjax0.png" alt="AFIFA BIO - زيت تدليك">
