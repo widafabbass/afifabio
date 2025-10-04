@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFIFA BIO - طلب شراء</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS de la page de commande */
+        :root {
+            --primary-green: #28a745;
+            --secondary-green: #5c8d5c;
+            --dark-text: #333333;
+            --card-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            font-family: 'Noto Sans Arabic', 'Cairo', sans-serif;
+            background-color: #f7f9f7;
+            padding-top: 80px;
+            direction: rtl; 
+            text-align: right;
+            min-height: 100vh;
+        }
+
+        .order-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .order-container h1 {
+            color: var(--primary-green);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary-green);
+            outline: none;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #1e7e34; /* Vert plus foncé */
+        }
+    </style>
+</head>
+<body>
+    <div class="order-container">
+        <h1>إكمال الطلب</h1>
+        
+        <form id="orderForm" action="https://formsubmit.co/widadabbassi3@gmail.com" method="POST"> 
+            
+            <input type="hidden" name="_subject" value="Nouvelle Commande AFIFA BIO !">
+            <input type="hidden" name="_next" value="http://votre-site.com/merci.html"> 
+
+            <div class="form-group">
+                <label for="product">المنتج المطلوب</label>
+                <select id="product" name="product" required>
+                    <option value="">اختر المنتج</option>
+                    <option value="Huile_Argan_Pure">زيت الأركان النقي</option>
+                    <option value="Huile_Cactus">زيت الصبار</option>
+                    </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="quantity">الكمية</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+            </div>
+            
+            <hr> 
+            
+            <div class="form-group">
+                <label for="full_name">الاسم الكامل (اللقب والاسم)</label>
+                <input type="text" id="full_name" name="full_name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">رقم الهاتف</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني (اختياري)</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="address">العنوان كاملا</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="city">المدينة</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+
+            <button type="submit" class="submit-btn">تأكيد الطلب</button>
+        </form>
+    </div>
+
+<script>
+    // ** 1. VARIABLES ESSENTIELLES **
+    const FORM_SUBMIT_URL = "https://formsubmit.co/widadabbassi3@gmail.com"; 
+    const YOUR_WHATSAPP_NUMBER = "212775383634"; 
+    const MAX_FREE_EMAILS = 100;
+    const ERROR_MESSAGE_KEY = 'formsubmit_error_flag'; 
+
+    // Récupérer le formulaire
+    const orderForm = document.getElementById('orderForm');
+
+    // Assurer que l'action du formulaire est bien celle de FormSubmit au départ
+    orderForm.action = FORM_SUBMIT_URL;
+
+    // Récupérer le compteur d'envois (initialiser à 0 si non existant)
+    let emailCount = parseInt(localStorage.getItem('formsubmit_email_count')) || 0;
+    
+    // Vérifier si une erreur FormSubmit a eu lieu précédemment (Activation non faite)
+    let hasFormSubmitError = localStorage.getItem(ERROR_MESSAGE_KEY) === 'true';
+
+    // Mettre à jour le texte du bouton en fonction du mode
+    const submitBtn = document.querySelector('.submit-btn');
+
+    if (emailCount >= MAX_FREE_EMAILS || hasFormSubmitError) {
+        submitBtn.textContent = "تأكيد الطلب (WhatsApp)";
+    } else {
+        submitBtn.textContent = "تأكيد الطلب (Email)";
+    }
+    
+    // Fonction de redirection WhatsApp
+    function redirectToWhatsApp() {
+        // 1. Récupération des valeurs
+        const product = document.getElementById('product').value;
+        const quantity = document.getElementById('quantity').value;
+        const full_name = document.getElementById('full_name').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        const city = document.getElementById('city').value;
+        const email = document.getElementById('email').value || 'لا يوجد';
+        
+        // 2. Construction du message WhatsApp
+        const messageText = `
+            *⚠️ طلب شراء عبر WhatsApp* *📝 طلب شراء جديد لـ AFIFA BIO*
+            
+            *🛒 معلومات المنتج:*
+            - المنتج: ${product}
+            - الكمية: ${quantity}
+            
+            *👤 معلومات العميل:*
+            - الاسم الكامل: ${full_name}
+            - الهاتف: ${phone}
+            - المدينة: ${city}
+            - العنوان: ${address}
+            - البريد الإلكتروني: ${email}
+        `;
+
+        // 3. Encodage et Redirection
+        const encodedMessage = encodeURIComponent(messageText);
+        const whatsappUrl = `https://wa.me/${YOUR_WHATSAPP_NUMBER}?text=${encodedMessage}`;
+        
+        window.location.href = whatsappUrl;
+    }
+
+    // Gestion de l'événement de soumission
+    orderForm.addEventListener('submit', function(e) {
+        
+        if (emailCount < MAX_FREE_EMAILS && !hasFormSubmitError) {
+            // MODE 1 : ENVOI PAR FORM SUBMIT (Email Gratuit)
+            
+            // Mise à jour du compteur pour le prochain envoi
+            emailCount++;
+            localStorage.setItem('formsubmit_email_count', emailCount);
+            
+            // Laisser le formulaire se soumettre normalement à FORM_SUBMIT_URL
+            
+            // Si FormSubmit échoue (activation manquante), le client reviendra.
+            // On utilise un timeout pour estimer si l'envoi a échoué.
+            setTimeout(() => {
+                // Si la page est toujours visible après 5 secondes, l'envoi a probablement échoué.
+                if (!document.hidden) {
+                    localStorage.setItem(ERROR_MESSAGE_KEY, 'true');
+                }
+            }, 5000); 
+
+        } else {
+            // MODE 2 : ENVOI PAR WHATSAPP (Illimité ou après échec FormSubmit)
+            
+            e.preventDefault(); // Stoppe l'envoi vers FormSubmit
+            redirectToWhatsApp();
+        }
+    });
+
+    // Message d'alerte pour le client s'il est basculé vers WhatsApp à cause d'une erreur
+    if (hasFormSubmitError) {
+        alert("عذرا، خدمة البريد الإلكتروني غير متوفرة حاليا. سيتم توجيهك إلى واتساب لإكمال طلبك.");
+        // Remet le flag à faux après l'alerte pour tenter l'email la prochaine fois si le client est de retour.
+        localStorage.setItem(ERROR_MESSAGE_KEY, 'false');
+    }
+</script>
+
+</body>
+</html>
